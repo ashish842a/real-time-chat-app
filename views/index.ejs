@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatting App</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+    <div class="onlinediv">
+      <div class="numOnline">Online (<span id="onlineNUm">0</span>) </div>
+      <div class="nameOnlineUser">  
+        <div class="activeUser">
+          <p><span id="greenCircle">🟢</span> ${elem} </p>
+        </div>  
+      </div>
+    </div>
+    <div class="overlay">
+      <form action="#" id="form-nam" method="post">
+      <input id="nam" type="text" name="nam" placeholder="Enter your name" required>
+      <input id="sub-nam" type="submit">
+      </form>
+    </div>
+    <!-- <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p> -->
+    <div class="container">
+      <div class="typing">
+        <p><span id="typingName"></span> is typing....</p>
+      </div>
+      <div class="containers">
+        <div class="box1">
+          <div class="messages" id="messages-container">
+          </div>
+  
+          
+        </div>
+
+
+      <!-- send photo -->
+      <form id="formPhoto" enctype="multipart/form-data">
+        <label for="uploads">Send Photo</label>
+        <input type="file" id="uploads" name="image">
+        <button type="button" id="imgsubmit">Upload</button>
+      </form>
+
+
+        <!-- <div class="status">
+          <div class="circle addStatus" id="addstatus">Add</div>
+          <div class="circle">
+           
+          </div>
+          <form action="/photo" method="post" enctype="multipart/form-data">
+            
+          <input type="file" id="uploads" name="image">
+          <input type="submit" id="imgsubmit">
+          </form>
+          
+        </div> -->
+
+      </div>
+      <!-- end of containers -->
+      <div class="box2">
+    
+        <textarea id="textarea" placeholder="Mesaage"></textarea>
+      </div>
+      <button id="send" >Send Message</button>
+      
+          </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js" integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- external js -->
+    <script src="/javascripts/script.js"></script>
+
+    <!-- <script>
+      document.querySelector("#addstatus").addEventListener("click",function(){
+        document.querySelector("#uploads").click();
+      })
+
+      var clutter=""
+      document.querySelector("#uploads").addEventListener("change",function(dets){
+        // document.querySelector("#imgsubmit").click()
+        document.querySelector("#imgsubmit").addEventListener("click",function(e){
+          e.preventDefault
+        })
+        console.log("ckicl");
+        axiox.get(`/photo`)
+        .then((user) => {
+          clutter+=`<div class="circle addStatus" id="addstatus">Add</div>
+          <div class="circle">
+            <img src=./images/uploads/${user.status} alt="image">
+          </div>`
+
+          document.querySelector(".status").innerHTML=clutter
+        }).catch((err) => {
+          console.log(err);
+        });
+        
+      })
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,266 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+  /* min-height: 100vh; */
+  /* overflow: hidden; */
+}
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+button{
+  cursor: pointer;
+}
+.overlay{
+  position: absolute;
+  z-index: 99;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.564);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* display: none; */
+}
+#form-nam{
+  display: flex;
+  flex-direction: column;
+}
+#nam{
+  width: 30vw;
+  height: fit-content;
+  padding: 10px;
+  font-size: 1.5vw;
+}
+#sub-nam{
+  cursor: pointer;
+  width: 30vw;
+  padding: 10px;
+  margin-top: 10px;
+  background: none;
+  border: 1px solid teal;
+  background-color: antiquewhite;
+  
+}
+/* no of user */
+.onlinediv{
+  position: absolute;
+  z-index: 99;
+  right: 10.3%;
+  top: 3.5%;
+  width: 150px;
+
+}
+.numOnline{
+  cursor: pointer;
+  padding: 10px 0px;
+  width: 100%;
+  background-color: rgb(220, 226, 231);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.nameOnlineUser{
+  width: 100%;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+}
+.activeUser{
+  /* background-color: aliceblue;  */
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#greenCircle{
+  font-size: 10px;
+}
+/* inner container */
+.container{
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  /* background-color: red; */
+  padding: 20px;
+  /* overflow: hidden; */
+}
+.container .typing{
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 99;
+  align-items: center;
+  background-color: #95afc0;
+  padding: 5px 10px;
+  opacity: 0;
+}
+.containers{
+  display: flex;
+  width: 100%;
+  height: 75%;
+  
+}
+.containers .status{
+  position: relative;
+  width: 10%;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 30px 0;
+  overflow: auto;
+  /* overflow-x: auto; */
+  /* flex-wrap: nowrap; */
+  /* white-space: nowrap; */
+}
+.status .circle{
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ff7675;
+}
+.circle img{
+  width: 100%;
+  height: 100%;
+  object-fit: center;
+}
+#addstatus{
+  cursor: pointer;
+}
+#uploads{
+  display: none;
+}
+#imgsubmit{
+  /* display: none; */
+}
+.status .addStatus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.containers .box1{
+  position: relative;
+  margin-bottom: 6px;
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+  padding: 15px 30px;
+  overflow: auto;
+  /* overflow: hidden; */
+}
+.container .box2{
+  width: 100%;
+  height: 15%;
+  background-color: azure;
+}
+.box2 textarea{
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  resize: none;
+}
+.container button{
+  font-size: 20px;
+  margin-top: 10px;
+  width: 100%;
+  height: 10%;
+  border: 1px solid rgba(0, 0, 0, 0.812);
+  /* background-color: #00B7FF; */
+  background-color: #0984e3;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.message{
+  padding-right: 100px;
+  width: 100%;
+  min-height: fit-content;
+  padding: 10px 20px;
+  /* background-color: #95a5a662; */
+  background-color: #55efc4;
+  
+}
+.message p{
+  width: 80%;
+}
+.msgleft{
+  /* gap: 1px; */
+  float: left;
+  width:300px;
+  border-radius: 10px 15px ;
+  padding: 10px 10px;
+  min-height:fit-content;
+  background-color: #55efc4;
+  clear: both;
+}
+.msgright{
+  float: right;
+  width:300px;
+  border-radius: 10px 15px ;
+  padding: 10px 10px;
+  min-height:fit-content;
+  background-color: #55efc4;
+  clear: both;
+}
+/* .outgoing{
+}
+.incoming{
+  clear: both;
+} */
+.msgleft p{
+  padding-top: 5px;
+}
+.msgright p{
+  padding-top: 5px;
+}
+
+
+
+
+/* media query */
+@media only screen and (max-width: 500px){
+  .onlinediv{
+    right: 4%;
+  }
+  #send{
+    font-size: 4vw;
+  }
+  .box2 textarea{
+    font-size: 3.5vw;
+  }
+  #nam{
+    font-size: 3vw;
+  }
+  .message{
+    /* background-color: red; */
+    font-size: 4vw;
+  }
+}
