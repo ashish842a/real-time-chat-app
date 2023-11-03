@@ -23,6 +23,8 @@ const upload = multer({ storage: storage });
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+
 router.post('/photo', upload.single('image'), async function (req, res, next) {
   try {
     let photo = await userModel.create({
@@ -33,15 +35,19 @@ router.post('/photo', upload.single('image'), async function (req, res, next) {
     // io.emit('image', { url: `/images/uploads/${req.file.filename}` });
 
     let imgUrl = `/images/uploads/${req.file.filename}`;
-    console.log(imgUrl);
+    
+    console.log("image", imgUrl);
 
     // Send a successful HTTP response with the image URL in JSON
-    res.json({ data: imgUrl });
+    // res.status(200).json({ imgUrl: imgUrl });
+    res.status(200).body({message:"hey"});
+    
   } catch (error) {
     console.error('Image upload error:', error);
     res.status(500).json({ error: 'Image upload failed' });
   }
 });
+
 
 
 module.exports = router;

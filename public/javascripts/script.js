@@ -133,12 +133,12 @@ document.querySelector("#imgsubmit").addEventListener("click", function () {
       method: "POST",
       body: formData,
     })
-      .then((response) => {
-        if (response) {
+      .then((data) => {
+        if (data) {
           // Image upload was successful
-          console.log(response);
+          console.log(data);
           console.log("Image uploaded successfully");
-          socket.emit('image', response.data); // Emit the image URL
+          socket.emit('image', data.imgUrl); // Emit the image URL
         } else {
           console.error("Image upload failed");
         }
@@ -151,36 +151,50 @@ document.querySelector("#imgsubmit").addEventListener("click", function () {
 
 // Handle the "image" event to display images
 socket.on("photourl", (photo) => {
-  const messagesContainer = document.querySelector("#messages-container");
+  const messagesContainer = document.querySelector(".box1 .messages");
 
-  // Create an image element and set the source to the received URL
-  messagesContainer.appendChild(document.createElement("br"));
-
+  // Create an image element and set the source to the received image URL
   const img = document.createElement("img");
-  img.src = photo.photo; // Use 'photo' instead of 'data'
+  img.src = photo.imgUrl;
 
-  // Append the image to the messages container
-  messagesContainer.appendChild(img);
+  // Create a container for the image
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("msgright");
+  imageContainer.appendChild(img);
 
+  // Append the image container to the messages container
+  messagesContainer.appendChild(imageContainer);
+
+  // Append a line break for a new message
   messagesContainer.appendChild(document.createElement("br"));
-  // Scroll to the bottom of the messages container to show the latest image
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  // Clear the textarea and scroll to the bottom
+  document.querySelector("#textarea").value = "";
+  scrollToBottom();
 });
 
+
 socket.on("image", (photo) => {
-  const messagesContainer = document.querySelector("#messages-container");
+  const messagesContainer = document.querySelector(".box1 .messages");
 
-  console.log(messagesContainer);
-  // Create an image element and set the source to the received URL
+  // Create an image element and set the source to the received image URL
   const img = document.createElement("img");
-  img.src = photo.photo; // Use 'photo' instead of 'data'
+  img.src = photo.imgUrl;
 
-  // Append the image to the messages container
-  messagesContainer.appendChild(img);
+  // Create a container for the image
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("msgleft");
+  imageContainer.appendChild(img);
 
+  // Append the image container to the messages container
+  messagesContainer.appendChild(imageContainer);
+
+  // Append a line break for a new message
   messagesContainer.appendChild(document.createElement("br"));
-  // Scroll to the bottom of the messages container to show the latest image
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  // Clear the textarea and scroll to the bottom
+  document.querySelector("#textarea").value = "";
+  scrollToBottom();
 });
 
 
