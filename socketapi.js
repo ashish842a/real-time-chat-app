@@ -66,7 +66,7 @@ io.on('connection', function(socket){
 socket.on("image", function (data) {
 
   console.log("socte side",data);
-  socket.emit("image", { imgUrl: data });
+  socket.emit("photourl", { imgUrl: data });
   socket.broadcast.emit("image", { imgUrl: data });
 
   // socket.emit("photourl", { imgUrl: "https://images.unsplash.com/photo-1697936331208-f6aa8fb15b88?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8" });

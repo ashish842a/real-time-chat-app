@@ -223,7 +223,7 @@ button{
 }
 .msgright{
   float: right;
-  max-width:100px;
+  max-width:300px;
   border-radius: 10px 15px ;
   padding: 10px 10px;
   min-height:fit-content;
