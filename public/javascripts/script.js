@@ -1,4 +1,7 @@
+
+// connect with socket 
 var socket = io();
+
 var nam = document.querySelector("#nam");
 var sub_nam = document.querySelector("#sub-nam");
 var form_nam =document.querySelector("#form-nam")
@@ -7,7 +10,6 @@ const element = document.querySelector(".box1");
 // for load time
 window.onload = function() {
 nam.focus();
-
 }
 
 
@@ -120,6 +122,7 @@ let countTag=0,i=0;;
 
 
 // Add an event listener to the "Upload" button
+
 document.querySelector("#imgsubmit").addEventListener("click", function () {
   const fileInput = document.querySelector("#uploads");
   const file = fileInput.files[0];
@@ -128,17 +131,24 @@ document.querySelector("#imgsubmit").addEventListener("click", function () {
     const formData = new FormData();
     formData.append("image", file);
 
-    // Use fetch to upload the image without reloading the page
-    fetch("/photo", {
-      method: "POST",
-      body: formData,
+    // Use Axios to upload the image without reloading the page
+    axios.post("/photo", formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     })
-      .then((data) => {
-        if (data) {
-          // Image upload was successful
-          console.log(data);
-          console.log("Image uploaded successfully");
-          socket.emit('image', data.imgUrl); // Emit the image URL
+      .then((response) => {
+        if (response.status === 200) {
+          // Parse the JSON response
+          console.log("res",response);
+          const data = response.data;
+          if (data) {
+            // Image upload was successful
+            console.log("Image uploaded successfully");
+            socket.emit('image', data.data); // Emit the image URL
+          } else {
+            console.error("Image upload failed");
+          }
         } else {
           console.error("Image upload failed");
         }
@@ -148,6 +158,7 @@ document.querySelector("#imgsubmit").addEventListener("click", function () {
       });
   }
 });
+
 
 // Handle the "image" event to display images
 socket.on("photourl", (photo) => {
