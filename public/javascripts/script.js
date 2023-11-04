@@ -140,7 +140,7 @@ document.querySelector("#imgsubmit").addEventListener("click", function () {
       .then((response) => {
         if (response.status === 200) {
           // Parse the JSON response
-          console.log("res",response);
+          // console.log("res",response);
           const data = response.data;
           if (data) {
             // Image upload was successful
